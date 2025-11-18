@@ -1,69 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, ...}:
 
 {
-  # Set your home state version.
-  imports = [ /Users/aldrete/.config/nix-secrets/secrets.nix ];
-
-  home.stateVersion = "23.11";
-  home.username = "aldrete";
-  home.homeDirectory = "/Users/aldrete";
-
-  # === YOUR PACKAGES GO HERE ===
-  home.packages = [
-    pkgs.home-manager
-    pkgs.git
-    pkgs.neovim
-    pkgs.ripgrep
-    pkgs.fzf
-    pkgs.eza
-    pkgs.statix
-  ];
-
-  # === YOUR PROGRAMS & DOTFILES GO HERE ===
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "DevAldrete";
-        email = "aldretelearns@gmail.com";
-      };
-    };
-  };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    oh-my-zsh = {
-      enable = true;
-      theme = "agnoster";
-    };
-    
-    initContent = ''
-      # ==== ALIASES ====
-      alias vi="nvim"
-      
-      # ==== ENVIRONMENT VARIABLES ====
-      
-      # ==== LOAD HOMEBREW ====
-      # This finds brew and adds it to your PATH
-      # (This is for Apple Silicon, /opt/homebrew)
-      if [ -f /opt/homebrew/bin/brew ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      fi
-      
-      # (Uncomment this if you are on an Intel Mac)
-      # if [ -f /usr/local/bin/brew ]; then
-      #   eval "$(/usr/local/bin/brew shellenv)"
-      # fi
-    '';
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
   # -----------------------------------------------------------------
   # 🚀 KITTY CONFIGURATION (Manual Mode)
   # -----------------------------------------------------------------
@@ -144,20 +81,4 @@
     map cmd+n new_window
     map cmd+q quit
   '';
-
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      user = {
-        email = "aldretelearns@gmail.com";
-        name = "DevAldrete";
-      };
-    };
-  };
-  programs.ssh = {
-    enable = true;
-    addKeysToAgent = "yes";
-    keys = [
-    ];
-  };
 }
