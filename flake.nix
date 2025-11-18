@@ -34,7 +34,7 @@
           inherit pkgs; # Pass our 'pkgs' set to home-manager
           
           # This is the actual configuration file we'll edit
-          modules = [ ./home.nix ];
+          modules = [ ./home-manager/home.nix ];
           
           # (Optional) You can add extra special arguments here
           extraSpecialArgs = { };
