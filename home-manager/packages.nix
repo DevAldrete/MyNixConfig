@@ -11,5 +11,11 @@
     pkgs.fzf
     pkgs.lua
     pkgs.nh
+    pkgs.rustup
+    pkgs.bat
+    pkgs.python313
+    pkgs.go
+    pkgs.bun
+    pkgs.nix-direnv
   ];
 }
