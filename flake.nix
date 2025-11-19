@@ -34,7 +34,20 @@
           inherit pkgs; # Pass our 'pkgs' set to home-manager
           
           # This is the actual configuration file we'll edit
-          modules = [ ./home-manager/home.nix ];
+          modules = [
+            ./home-manager/home.nix 
+
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  fish = prev.fish.overrideAttrs (old: {
+                    doCheck = false; 
+                    checkPhase = null; 
+                  });
+                })
+              ];
+            }
+          ];
           
           # (Optional) You can add extra special arguments here
           extraSpecialArgs = { };
